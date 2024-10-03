@@ -7,3 +7,4 @@ maybe sound design
 animations
 sprites
 abandoned or recently collapsed mining cave 
+chests?
