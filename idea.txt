@@ -3,5 +3,7 @@ adventure
 cave exploring
 enemies
 dialog
-maybe sound
+maybe sound design
+animations
+sprites
 abandoned or recently collapsed mining cave 
