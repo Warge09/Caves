@@ -2,9 +2,17 @@
 let SecondsPassed;
 let OldTimeStamp;
 let FramesPerSecond;
+let canvas;
+let context;
 
+window.onload = init;
 
+function init() {
+    canvas = document.getElementById('GameCanvas');
+    const ctx = canvas.getContext('2d');
 
+    draw();
+}
 
 
 const Keys = {
