@@ -1,21 +1,12 @@
 
-let SecondsPassed;
-let OldTimeStamp;
-let FramesPerSecond;
+let lastFrame = 0;
 this.ctx = null;
 
 window.onload = init;
 
 
-function init() {
-    const canvas = document.getElementById("GameCanvas");
-    ctx = canvas.getContext("2d");
-    
-    ctx.fillStyle = "rgb(256 100 5)";
-    ctx.fillRect(10, 10, 50, 50);
+function GameLoop() {
 
-    draw();
-    
 }
 
 function drawWorld() {
