@@ -1,6 +1,11 @@
-
-let lastFrame = 0;
-this.ctx = null;
+class Engine {
+    constructor() {
+        let canvas = null;
+        let ctx = null;
+        this.ctx.width = 1500;
+        this.ctx.height = 800;
+    }
+}
 
 window.onload = init;
 
@@ -18,6 +23,10 @@ const Keys = {
     ArrowLeft: false,
     ArrowRight: false,
 }
+
+document.addEventListener('click', function(MouseClick) {
+
+})
 
 document.addEventListener('keydown', function(PlMove) {
     switch (Event.PlMove) {

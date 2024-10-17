@@ -6,36 +6,60 @@ class AssetControl {
         this.cache = {};
     }
 
-    downloadQueue(path) {
+    AddTodownloadQueue(path) {
         console.log("Queueing " + path);
         this.downloadQueue.push(path);
     }
 
     downloadAll(downloadCallBack) {
         if (this.downloadQueue.length === 0) {
-            downloadCallBack;
+            downloadCallBack();
         }
         for (var i = 0; i < this.downloadQueue.length; i++) {
             var path = this.downloadQueue[i];
-            var img = new Image();
             var that = this;
 
-            img.addEventListener("load", function () {
-                console.log(this.src + 'has loaded');
-                that.SuccessfulLoad++;
-                if (that.isDone()) { downloadCallBack(); }
-            }, false);
+            var GetExtension = path.substring(path.length - 3).toLowerCase();
 
-            Image.addEventListener("Error", function () {
-                console.log(this.src + 'has failed to load.');
-                that.UnsuccessfullLoad++;
+            switch (GetExtension) {
+                case 'png':
+                case 'jpg':
+                case 'jpeg':
+                    var img = new Image();
+                    img.addEventListener("load", function () {
+                        console.log(this.src + ' has loaded');
+                        that.SuccessfulLoad++;
+                        if (that.isDone()) { downloadCallBack(); }
+                    }, false);
+        
+                    img.addEventListener("Error", function () {
+                        console.log(this.src + ' has failed to load.');
+                        that.UnsuccessfullLoad++;
+                        if (that.isDone()) { downloadCallBack(); }
+        
+                    }, false);
+                    img.src = path;
+                    this.cache[path] = img;
+                    break;
 
-                
+                case 'mp3':
+                case 'wav':
+                    var aud = new Audio();
+                    aud.addEventListener("load", function () {
+                        console.log(this.src + ' has loaded');
+                        that.SuccessfulLoad++;
+                        if (that.isDone()) {downloadCallBack(); }
+                    }, false);
 
-                if (that.isDone()) { downloadCallBack(); }
-
-            }, false);
-            img.src = path;
+                    aud.addEventListener("Error", function() {
+                        console.log(this.src + ' has failed to load.');
+                        that.UnsuccessfullLoad++;
+                        if (that.isDone()) {downloadCallBack(); }
+                    }. false);
+                    aud.src = path;
+                    this.cache[path] = aud;
+                    break;
+            } 
         }
     }
 
@@ -47,11 +71,3 @@ class AssetControl {
         return this.cache[path];
     }
 } 
-
-        
-
-
-
-    
-
-// 
