@@ -12,7 +12,7 @@ class AssetControl {
     }
 
     downloadAll(downloadCallBack) {
-        if (this.downloadQueue.length === 0) {
+        if (this.downloadQueue.length === 0) { 
             downloadCallBack();
         }
         for (var i = 0; i < this.downloadQueue.length; i++) {

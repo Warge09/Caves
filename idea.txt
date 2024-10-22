@@ -8,6 +8,5 @@ animations
 sprites
 abandoned or recently collapsed mining cave 
 chests?
-lighting strikes
 pickaxe you can pick up at the start
 cave entrance is blocked except hole from explosion
