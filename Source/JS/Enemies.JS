@@ -1,15 +1,23 @@
-class Bat {
-  constructor(x, y, sprite, width, height, spritesource) {
-    this.x = 0;
-    this.y = 0;
-    this.Health = 50;
-    this.Attack = 10;
-    this.AttackSpeed = 5;
-    this.sprite = new Image();
-    this.sprite.src = spritesource;
-
-    this.sprite = Asset_Controller_getasset("./Assets/Sprites/bat.png");
+class NPC {
+  constructor(character) {
+      this.width = 32;
+      this.sprite = new Sprite('character.png');
+      this._x = 250;
+      this._y = canvas.height - this.width;
+      this.character = character
   }
 
-  drawSprite(x, y) {}
+  draw() {
+      this.sprite.draw(this._x, this._y - 32)
+
+      if (this.character.response == null) {
+          context.font = "bold 18px serif";
+          context.fillText(dialogues[0].text, this._x, this._y - 64)
+
+      } else {
+          context.font = "bold 18px serif";
+          context.fillText(dialogues[0].options[this.character.response].response, this._x, this._y - 60)
+      }
+
+  }
 }
